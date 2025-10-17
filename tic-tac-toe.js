@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const board = document.getElementById("board");
     const cells = board.querySelectorAll("div");
 	const status = document.getElementById("status");
+    const newGameBtn = document.querySelector(".btn");
     let moveCount = 0;
     let gameOver = false;
     
@@ -41,5 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
 				gameOver = true;
 			}
         });
+    });
+    newGameBtn.addEventListener("click", () => {
+        cells.forEach((cell) => {
+            cell.textContent = "";
+            cell.classList.remove("X", "O");
+        });
+        moveCount = 0;
+        gameOver = false;
+        status.textContent = "Move your mouse over a square and click to play an X or an O.";
+        status.classList.remove("you-won");
     });
 });
